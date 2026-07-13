@@ -34,12 +34,22 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="card shadow-sm border-0 bg-info text-white">
                 <div class="card-body">
                     <h5 class="card-title"><i class='bx bx-trending-up'></i> Kas Masuk (Cicilan)</h5>
                     <h2 class="card-text fw-bold">Rp{{ number_format($totalInstallmentsPaid, 0, ',', '.') }}</h2>
                     <p class="mb-0 small">Dari Angsuran Terbayar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 bg-secondary text-white">
+                <div class="card-body">
+                    <h5 class="card-title"><i class='bx bx-wallet-alt'></i> Saldo Kas Lainnya</h5>
+                    <h2 class="card-text fw-bold">Rp{{ number_format($totalCash, 0, ',', '.') }}</h2>
+                    <p class="mb-0 small">Total Jurnal Kas Tersedia</p>
                 </div>
             </div>
         </div>

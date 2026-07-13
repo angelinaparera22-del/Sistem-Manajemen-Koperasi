@@ -34,4 +34,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Member::class);
     }
+
+    public function cashJournals()
+    {
+        return $this->hasMany(CashJournal::class, 'created_by');
+    }
 }

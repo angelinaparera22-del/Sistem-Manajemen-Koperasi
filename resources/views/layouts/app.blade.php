@@ -327,6 +327,13 @@
                         <span>Pembagian SHU</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('cash-journal.*') ? '' : 'collapsed' }}"
+                        href="{{ route('cash-journal.index') }}">
+                        <i class='bx bx-book-content'></i>
+                        <span>Jurnal Kas</span>
+                    </a>
+                </li>
             @endif
 
             @if (Auth::user()->role == 'Superadmin')

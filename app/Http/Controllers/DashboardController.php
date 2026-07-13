@@ -23,12 +23,17 @@ class DashboardController extends Controller
             ->selectRaw('SUM(amount_paid + penalty_amount) as total')
             ->value('total') ?? 0;
 
+        $cashIncome = \App\Models\CashJournal::where('type', 'Income')->sum('amount');
+        $cashExpense = \App\Models\CashJournal::where('type', 'Expense')->sum('amount');
+        $totalCash = $cashIncome - $cashExpense;
+
         return view('dashboard.index', [
             'title' => 'Dashboard',
             'totalMembers' => $totalMembers,
             'totalSavings' => $totalSavings,
             'totalActiveLoans' => $totalActiveLoans,
             'totalInstallmentsPaid' => $totalInstallmentsPaid,
+            'totalCash' => $totalCash,
         ]);
     }
 
