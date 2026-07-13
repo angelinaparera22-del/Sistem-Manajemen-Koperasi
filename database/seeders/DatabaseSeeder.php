@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             InstallmentSeeder::class,
             ShuDistributionSeeder::class,
             CashJournalSeeder::class,
+            NotificationSeeder::class,
         ]);
     }
 }

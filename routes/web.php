@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/cash-journal', \App\Http\Controllers\CashJournalController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/installment', \App\Http\Controllers\InstallmentController::class)->middleware('role:Superadmin,Admin');
+
+    Route::get('/notifications/{id}/read', [\App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.read');
+    
     Route::resource('/loan', \App\Http\Controllers\LoanController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/saving', \App\Http\Controllers\SavingController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/member', MemberController::class)->middleware('role:Superadmin,Admin');

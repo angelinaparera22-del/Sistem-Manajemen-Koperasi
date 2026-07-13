@@ -205,6 +205,39 @@
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell"></i>
+                        @if(Auth::user()->unreadNotifications->count() > 0)
+                            <span class="badge bg-primary badge-number">{{ Auth::user()->unreadNotifications->count() }}</span>
+                        @endif
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                        <li class="dropdown-header">
+                            Anda memiliki {{ Auth::user()->unreadNotifications->count() }} notifikasi baru
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        @foreach(Auth::user()->unreadNotifications->take(5) as $notification)
+                        <li class="notification-item">
+                            <i class="bi bi-info-circle text-primary"></i>
+                            <div>
+                                <h4>{{ $notification->data['title'] ?? 'Notifikasi' }}</h4>
+                                <p>{{ $notification->data['message'] ?? '' }}</p>
+                                <p>{{ $notification->created_at->diffForHumans() }}</p>
+                                <a href="{{ route('notifications.read', $notification->id) }}" class="btn btn-sm btn-link p-0">Tandai dibaca</a>
+                            </div>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
+
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
