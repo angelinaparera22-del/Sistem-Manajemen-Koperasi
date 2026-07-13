@@ -11,15 +11,24 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalUsers = \App\Models\User::count();
-        $superadminCount = \App\Models\User::where('role', 'Superadmin')->count();
-        $adminCount = \App\Models\User::where('role', 'Admin')->count();
+        $totalMembers = \App\Models\Member::count();
+        
+        $totalDeposit = \App\Models\Saving::where('transaction_type', 'Deposit')->sum('amount');
+        $totalWithdrawal = \App\Models\Saving::where('transaction_type', 'Withdrawal')->sum('amount');
+        $totalSavings = $totalDeposit - $totalWithdrawal;
+
+        $totalActiveLoans = \App\Models\Loan::where('status', 'Active')->sum('amount');
+        
+        $totalInstallmentsPaid = \App\Models\Installment::where('status', 'Paid')
+            ->selectRaw('SUM(amount_paid + penalty_amount) as total')
+            ->value('total') ?? 0;
 
         return view('dashboard.index', [
             'title' => 'Dashboard',
-            'totalUsers' => $totalUsers,
-            'superadminCount' => $superadminCount,
-            'adminCount' => $adminCount,
+            'totalMembers' => $totalMembers,
+            'totalSavings' => $totalSavings,
+            'totalActiveLoans' => $totalActiveLoans,
+            'totalInstallmentsPaid' => $totalInstallmentsPaid,
         ]);
     }
 
