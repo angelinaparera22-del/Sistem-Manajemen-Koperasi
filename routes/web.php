@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
     Route::put('/dashboard/update', [DashboardController::class, 'update'])->name('dashboard.update');
 
+    Route::resource('/installment', \App\Http\Controllers\InstallmentController::class)->middleware('role:Superadmin,Admin');
+    Route::resource('/loan', \App\Http\Controllers\LoanController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/saving', \App\Http\Controllers\SavingController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/member', MemberController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/user', UserController::class)->middleware('role:Superadmin');

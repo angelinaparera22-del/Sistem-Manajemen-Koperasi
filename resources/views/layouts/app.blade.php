@@ -299,6 +299,20 @@
                         <span>Simpanan</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('loan.*') ? '' : 'collapsed' }}"
+                        href="{{ route('loan.index') }}">
+                        <i class='bx bx-credit-card'></i>
+                        <span>Pinjaman</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('installment.*') ? '' : 'collapsed' }}"
+                        href="{{ route('installment.index') }}">
+                        <i class='bx bx-receipt'></i>
+                        <span>Angsuran</span>
+                    </a>
+                </li>
             @endif
 
             @if (Auth::user()->role == 'Superadmin')
