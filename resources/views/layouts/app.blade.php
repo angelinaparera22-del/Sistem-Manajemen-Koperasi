@@ -292,6 +292,13 @@
                         <span>Keanggotaan</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('saving.*') ? '' : 'collapsed' }}"
+                        href="{{ route('saving.index') }}">
+                        <i class='bx bx-wallet'></i>
+                        <span>Simpanan</span>
+                    </a>
+                </li>
             @endif
 
             @if (Auth::user()->role == 'Superadmin')
