@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/report', [\App\Http\Controllers\ReportController::class, 'index'])->name('report.index')->middleware('role:Superadmin,Admin');
     Route::get('/report/export-pdf', [\App\Http\Controllers\ReportController::class, 'exportPdf'])->name('report.export_pdf')->middleware('role:Superadmin,Admin');
 
+    Route::get('/shu', [\App\Http\Controllers\ShuController::class, 'index'])->name('shu.index')->middleware('role:Superadmin,Admin');
+    Route::post('/shu/calculate', [\App\Http\Controllers\ShuController::class, 'calculate'])->name('shu.calculate')->middleware('role:Superadmin,Admin');
+
     Route::resource('/installment', \App\Http\Controllers\InstallmentController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/loan', \App\Http\Controllers\LoanController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/saving', \App\Http\Controllers\SavingController::class)->middleware('role:Superadmin,Admin');

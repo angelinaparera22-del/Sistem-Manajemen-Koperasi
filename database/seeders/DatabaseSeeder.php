@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             SavingSeeder::class,
             LoanSeeder::class,
             InstallmentSeeder::class,
+            ShuDistributionSeeder::class,
         ]);
     }
 }

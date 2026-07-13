@@ -320,6 +320,13 @@
                         <span>Laporan</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('shu.*') ? '' : 'collapsed' }}"
+                        href="{{ route('shu.index') }}">
+                        <i class='bx bx-pie-chart-alt-2'></i>
+                        <span>Pembagian SHU</span>
+                    </a>
+                </li>
             @endif
 
             @if (Auth::user()->role == 'Superadmin')
