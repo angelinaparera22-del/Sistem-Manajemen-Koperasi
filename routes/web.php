@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/notifications/{id}/read', [\App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.read');
     
+    Route::get('/activity-logs', [\App\Http\Controllers\ActivityLogController::class, 'index'])->name('activity-logs.index')->middleware('role:Superadmin');
+
     Route::resource('/loan', \App\Http\Controllers\LoanController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/saving', \App\Http\Controllers\SavingController::class)->middleware('role:Superadmin,Admin');
     Route::resource('/member', MemberController::class)->middleware('role:Superadmin,Admin');

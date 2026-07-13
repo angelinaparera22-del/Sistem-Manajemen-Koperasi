@@ -325,6 +325,7 @@
                         <span>Keanggotaan</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('saving.*') ? '' : 'collapsed' }}"
                         href="{{ route('saving.index') }}">
@@ -375,6 +376,20 @@
                         href="{{ route('user.index') }}">
                         <i class='bx bx-user-pin'></i>
                         <span>User</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('setting.*') ? '' : 'collapsed' }}"
+                        href="{{ route('setting.index') }}">
+                        <i class='bx bx-cog'></i>
+                        <span>Pengaturan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('activity-logs.*') ? '' : 'collapsed' }}"
+                        href="{{ route('activity-logs.index') }}">
+                        <i class='bx bx-history'></i>
+                        <span>Log Aktivitas</span>
                     </a>
                 </li>
             @endif

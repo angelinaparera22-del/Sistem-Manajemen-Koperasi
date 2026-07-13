@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Traits\LogsActivity;
+
 class Installment extends Model
 {
+    use LogsActivity;
+
     protected $fillable = [
         'loan_id',
         'amount_paid',
