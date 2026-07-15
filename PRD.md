@@ -32,6 +32,11 @@ Sistem ini menggunakan arsitektur berbasis MVC (Model-View-Controller) yang diim
 3. **Savings (Simpanan):** Mencatat setiap transaksi setoran maupun penarikan yang dilakukan oleh anggota, diklasifikasikan berdasarkan jenis (pokok, wajib, sukarela).
 4. **Loans (Pinjaman):** Mencatat permohonan pinjaman, status permohonan (pending, approved, rejected, paid_off), total pinjaman, bunga, dan tenor.
 5. **Installments (Angsuran):** Mencatat riwayat pembayaran angsuran untuk suatu pinjaman, lengkap dengan jatuh tempo, jumlah denda (jika ada), dan tanggal pembayaran.
+6. **Positions (Jabatan):** Menyimpan daftar jabatan atau posisi (contoh: Ketua, Bendahara, dll) yang ada dalam struktur organisasi koperasi.
+7. **Expenses (Pengeluaran):** Mencatat pengeluaran operasional koperasi (seperti alat tulis, tagihan listrik, gaji karyawan).
+8. **Incomes (Pemasukan):** Mencatat pemasukan koperasi di luar transaksi simpanan/angsuran (misal: sumbangan, bagi hasil unit usaha).
+9. **Announcements (Pengumuman):** Menyimpan informasi atau pengumuman penting yang ditujukan untuk seluruh anggota koperasi.
+10. **Agendas (Agenda):** Mencatat agenda atau jadwal kegiatan koperasi (seperti Rapat Anggota Tahunan, audit internal, dll).
 
 ### 4.2 Visualisasi ERD (Mermaid Diagram)
 
@@ -93,6 +98,53 @@ erDiagram
         date due_date
         string status "Enum: Paid, Unpaid, Late"
         timestamp created_at
+    }
+
+    POSITIONS {
+        bigint id PK
+        string name
+        text description
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    EXPENSES {
+        bigint id PK
+        string title
+        decimal amount
+        date date
+        text description
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    INCOMES {
+        bigint id PK
+        string title
+        decimal amount
+        date date
+        text description
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    ANNOUNCEMENTS {
+        bigint id PK
+        string title
+        text content
+        boolean is_active
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    AGENDAS {
+        bigint id PK
+        string title
+        datetime date
+        string location
+        text description
+        timestamp created_at
+        timestamp updated_at
     }
 
     %% Relasi antar tabel

@@ -26,6 +26,11 @@ class DatabaseSeeder extends Seeder
             CashJournalSeeder::class,
             NotificationSeeder::class,
             ActivityLogSeeder::class,
+            PositionSeeder::class,
+            ExpenseSeeder::class,
+            IncomeSeeder::class,
+            AnnouncementSeeder::class,
+            AgendaSeeder::class,
         ]);
     }
 }
