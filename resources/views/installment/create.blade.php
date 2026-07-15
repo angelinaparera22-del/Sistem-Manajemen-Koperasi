@@ -31,6 +31,7 @@
                     <div class="mb-3">
                         <label for="penalty_amount" class="form-label required">Denda Keterlambatan (Rp)</label>
                         <input class="form-control @error('penalty_amount') is-invalid  @enderror" type="number" min="0" id="penalty_amount" name="penalty_amount" required value="{{ old('penalty_amount', 0) }}">
+                        <small class="text-muted">Denda default: Rp{{ number_format($setting->late_penalty_fee ?? 0, 0, ',', '.') }}</small>
                         @error('penalty_amount')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

@@ -44,5 +44,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('/user', UserController::class)->middleware('role:Superadmin');
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
-    Route::put('/setting/{setting}/update', [SettingController::class, 'update'])->name('setting.update');
+    Route::put('/setting/update', [SettingController::class, 'update'])->name('setting.update');
 });

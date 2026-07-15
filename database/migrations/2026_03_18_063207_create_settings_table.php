@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('app_name');
-            $table->string('copyright');
-            $table->string('login_title');
-            $table->string('keywords')->nullable();
+            $table->string('key')->unique();
+            $table->text('value')->nullable();
             $table->string('description')->nullable();
-            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }

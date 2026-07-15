@@ -4,7 +4,7 @@
 
     <div class="card shadow-lg p-3">
 
-        <form action="{{ route('setting.update', $setting) }}" method="post" enctype="multipart/form-data" class="form">
+        <form action="{{ route('setting.update') }}" method="post" enctype="multipart/form-data" class="form">
             @csrf
             @method('put')
 
@@ -59,6 +59,28 @@
                     <textarea class="form-control @error('description') is-invalid  @enderror" id="description" name="description"
                         cols="30" rows="3">{{ old('description', $setting->description) }}</textarea>
                     @error('description')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="col-md-6">
+                    <label for="interest_rate_default" class="form-label required">Bunga Default (%)</label>
+                    <input class="form-control @error('interest_rate_default') is-invalid  @enderror" type="number" step="0.01" id="interest_rate_default"
+                        name="interest_rate_default" required value="{{ old('interest_rate_default', $setting->interest_rate_default ?? 2.00) }}">
+                    @error('interest_rate_default')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="col-md-6">
+                    <label for="late_penalty_fee" class="form-label required">Denda Keterlambatan (Rp)</label>
+                    <input class="form-control @error('late_penalty_fee') is-invalid  @enderror" type="number" id="late_penalty_fee"
+                        name="late_penalty_fee" required value="{{ old('late_penalty_fee', $setting->late_penalty_fee ?? 50000) }}">
+                    @error('late_penalty_fee')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

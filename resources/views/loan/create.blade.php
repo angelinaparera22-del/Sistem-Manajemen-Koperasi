@@ -30,7 +30,7 @@
 
                     <div class="mb-3">
                         <label for="interest_rate" class="form-label required">Bunga (%)</label>
-                        <input class="form-control @error('interest_rate') is-invalid  @enderror" type="number" step="0.01" min="0" id="interest_rate" name="interest_rate" required value="{{ old('interest_rate') }}">
+                        <input class="form-control @error('interest_rate') is-invalid  @enderror" type="number" step="0.01" min="0" id="interest_rate" name="interest_rate" required value="{{ old('interest_rate', $setting->interest_rate_default ?? '') }}">
                         @error('interest_rate')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

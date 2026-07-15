@@ -22,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         try {
-            $setting = Setting::first();
+            $settings = Setting::pluck('value', 'key');
+            $setting = (object) $settings->all();
             View::share('setting', $setting);
         } catch (\Exception $e) {
             // database tidak ditemukan
