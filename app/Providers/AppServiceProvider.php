@@ -22,11 +22,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         try {
-            $settings = Setting::pluck('value', 'key');
-            $setting = (object) $settings->all();
+            $setting = new \App\Models\Setting();
+            if (\Illuminate\Support\Facades\Schema::hasTable('settings')) {
+                $settings = Setting::pluck('value', 'key');
+                $setting = new \App\Models\Setting($settings->all());
+            }
             View::share('setting', $setting);
         } catch (\Exception $e) {
-            // database tidak ditemukan
+            View::share('setting', new \App\Models\Setting());
         }
     }
 }
